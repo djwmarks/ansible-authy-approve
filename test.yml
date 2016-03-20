@@ -1,0 +1,16 @@
+---
+ - name: Authy Test
+   gather_facts: False
+   hosts: localhost
+   tasks:
+     - authy_approve:
+         api_key: "{{ authy_api_key }}"
+         message: Approve Ansible deployment
+         details:
+           key1: value1
+         approvers:
+           - authy_id: USER_AUTHY_ID
+       register: output
+
+     - debug:
+         var: output
